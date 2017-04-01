@@ -6,13 +6,13 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/01 18:40:35 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/01 20:00:42 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
 
-void				del_t_alcu(t_alcu *alcu)
+void				del_t_alcu(t_alcu *alcu, t_alcu2 *alcu2)
 {
 	t_alcu		*tmp;
 
@@ -26,6 +26,23 @@ void				del_t_alcu(t_alcu *alcu)
 		ft_memdel((void**)&alcu);
 		alcu = tmp;
 	}
+	ft_memdel((void**)&alcu2);
+}
+
+t_alcu				*reset_position_t_alcu(t_alcu *alcu)
+{
+	while (alcu && alcu->previous)
+		alcu = alcu->previous;
+	return (alcu);
+}
+
+static t_alcu2				*init_t_alcu2(t_alcu2 *alcu2)
+{
+	if (!(alcu2 = ft_memalloc(sizeof(t_alcu2))))
+		return (NULL);
+	alcu2->scoreai = 0;
+	alcu2->scorehuman = 0;
+	return (alcu2);
 }
 
 t_alcu				*init_add_t_alcu(t_alcu *alcu)
@@ -54,24 +71,28 @@ t_alcu				*init_add_t_alcu(t_alcu *alcu)
 int					main(int argc, char **argv)
 {
 	t_alcu		*alcu;
+	t_alcu2		*alcu2;
 	int			ret;
 
 	(void)argv;
 	alcu = NULL;
+	alcu2 = NULL;
 	ret = 0;
 	if (argc != 1 && argc != 2)
 	{
 		ft_putendl("Usage : ./alum1 [Optional file well formatted]");
 		return (-1);
 	}
+	if (!(alcu2 = init_t_alcu2(alcu2)))
+		return (-1);
 	display_start();
 	if ((argc == 1 && (!(alcu = parsing_stdi(alcu, &ret)) || ret == -1)))
 		//|| (argc == 2 && (!(alcu = parsing_param(alcu, argv)) || ret == -1)))
 	{
-		display_error(alcu);
+		display_error(alcu, alcu2);
 		return (-1);
 	}
-	//jeu
-	del_t_alcu(alcu);
+	game(alcu, alcu2);
+	del_t_alcu(alcu, alcu2);
 	return (0);
 }
