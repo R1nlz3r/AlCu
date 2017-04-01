@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/01 16:13:24 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/01 18:40:35 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,16 @@ void				del_t_alcu(t_alcu *alcu)
 {
 	t_alcu		*tmp;
 
-	ft_putchar('@');
 	while (alcu && alcu->previous)
 	{
-		ft_putchar('-');
 		alcu = alcu->previous;
 	}
 	while (alcu)
 	{
-		ft_putchar('*');
 		tmp = alcu->next;
 		ft_memdel((void**)&alcu);
 		alcu = tmp;
 	}
-	ft_putchar('@');
 }
 
 t_alcu				*init_add_t_alcu(t_alcu *alcu)
@@ -60,7 +56,7 @@ int					main(int argc, char **argv)
 	t_alcu		*alcu;
 	int			ret;
 
-	(void)argv; //à retirer
+	(void)argv;
 	alcu = NULL;
 	ret = 0;
 	if (argc != 1 && argc != 2)
@@ -70,7 +66,7 @@ int					main(int argc, char **argv)
 	}
 	display_start();
 	if ((argc == 1 && (!(alcu = parsing_stdi(alcu, &ret)) || ret == -1)))
-//		|| (argc == 2 && parsing_param(alcu, argv) == -1))
+		//|| (argc == 2 && (!(alcu = parsing_param(alcu, argv)) || ret == -1)))
 	{
 		display_error(alcu);
 		return (-1);
