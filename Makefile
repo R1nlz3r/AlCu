@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/31 20:16:58 by mapandel          #+#    #+#              #
-#    Updated: 2017/03/31 20:18:11 by mapandel         ###   ########.fr        #
+#    Updated: 2017/04/01 16:26:50 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,14 @@ CFLAGS = 	-Wall -Wextra -Werror -Weverything
 
 #			Sources
 
-SRC =
+SRC =		sources/main.c \
+			sources/parsing_stdi.c \
+			sources/display.c \
+			#sources/parsing_param.c \
 
 OBJ =		$(SRC:.c=.o)
+
+INC =		includes
 
 #			Library Path
 
@@ -61,7 +66,7 @@ glu: fclean all clean
 #			Compilation Rules
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+	$(CC) $(CFLAGS) -I $(INC) -c -o $@ $^
 
 #			Clean Rules
 
