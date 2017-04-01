@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/31 20:16:58 by mapandel          #+#    #+#              #
-#    Updated: 2017/04/01 16:26:50 by mapandel         ###   ########.fr        #
+#    Updated: 2017/04/01 20:44:13 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CFLAGS = 	-Wall -Wextra -Werror -Weverything
 SRC =		sources/main.c \
 			sources/parsing_stdi.c \
 			sources/display.c \
+			sources/game.c \
 			#sources/parsing_param.c \
 
 OBJ =		$(SRC:.c=.o)
