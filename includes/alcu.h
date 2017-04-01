@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/31 20:29:00 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/01 15:54:54 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,17 @@
 
 typedef struct			s_alcu
 {
-	//types
+	struct s_alcu		*previous;
+	struct s_alcu		*next;
+	int					board;
+	char				pad_0[4];
 }						t_alcu;
 
-//prototypes
+t_alcu					*init_add_t_alcu(t_alcu *alcu);
+void					del_t_alcu(t_alcu *alcu);
+void					display_error(t_alcu *alcu);
+void					display_start(void);
+t_alcu					*parsing_stdi(t_alcu *alcu, int *ret);
+//int						parsing_param(t_alcu *alcu, char **argv);
 
 #endif
