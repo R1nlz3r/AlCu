@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/02 17:12:54 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 21:55:30 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_alcu				*reset_position_t_alcu(t_alcu *alcu)
 	return (alcu);
 }
 
-static t_alcu2				*init_t_alcu2(t_alcu2 *alcu2)
+static t_alcu2		*init_t_alcu2(t_alcu2 *alcu2)
 {
 	if (!(alcu2 = ft_memalloc(sizeof(t_alcu2))))
 		return (NULL);
@@ -65,7 +65,6 @@ t_alcu				*init_add_t_alcu(t_alcu *alcu)
 	alcu->previous = NULL;
 	if (tmp)
 		alcu->previous = tmp;
-
 	return (alcu);
 }
 
