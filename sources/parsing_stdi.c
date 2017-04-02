@@ -6,20 +6,20 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 12:56:08 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/02 17:30:35 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 20:45:29 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
 
-static t_alcu	*parsing_stdi2(t_alcu *alcu, char *buf, int *tmp, int lock,
-	int *ret)
+static t_alcu	*parsing_stdi2(t_alcu *alcu, char *buf, int *lock, int *ret)
 {
 	int		i;
+	int		tmp;
 
 	i = 0;
-	if ((buf[0] == '\n' && !lock) || ft_strlen(buf) > 6
-		|| (*tmp = ft_atoi(buf)) < 1 || *tmp > 10000
+	if ((buf[0] == '\n' && !*lock) || ft_strlen(buf) > 6
+		|| (tmp = ft_atoi(buf)) < 1 || tmp > 10000
 		|| !(alcu = init_add_t_alcu(alcu)))
 	{
 		ft_strdel(&buf);
@@ -34,7 +34,7 @@ static t_alcu	*parsing_stdi2(t_alcu *alcu, char *buf, int *tmp, int lock,
 		*ret = -1;
 		return (alcu);
 	}
-	alcu->board = *tmp;
+	alcu->board = tmp;
 	ft_strclr(buf);
 	return (alcu);
 }
@@ -42,7 +42,6 @@ static t_alcu	*parsing_stdi2(t_alcu *alcu, char *buf, int *tmp, int lock,
 t_alcu			*parsing_stdi(t_alcu *alcu, int *ret)
 {
 	char		*buf;
-	int			tmp;
 	int			lock;
 
 	lock = 0;
@@ -59,7 +58,7 @@ t_alcu			*parsing_stdi(t_alcu *alcu, int *ret)
 		read(1, buf, 10000);
 		if (buf[0] == '\n' && lock)
 			break ;
-		else if (!(alcu = parsing_stdi2(alcu, buf, &tmp, lock, ret))
+		else if (!(alcu = parsing_stdi2(alcu, buf, &lock, ret))
 			|| *ret == -1)
 			return (alcu);
 		lock = 1;
