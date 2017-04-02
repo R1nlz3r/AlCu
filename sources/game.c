@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 18:48:03 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/02 20:20:08 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 22:11:34 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int		ai_plays(t_alcu *alcu)
 	if (mod > 0 && mod <= 3)
 		return (mod);
 	return (1);
-
 }
 
 static int		human_plays(t_alcu *alcu, t_alcu2 *alcu2, char *buf)
