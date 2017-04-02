@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 12:56:08 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/01 16:07:51 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/01 23:45:26 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_alcu			*parsing_stdi(t_alcu *alcu, int *ret)
 	if (!(buf = ft_strnew(10000))
 		&& (*ret = -1))
 		return (alcu);
-	ft_putendl("Usage :");
+	ft_putendl("\033[4mUsage\033[24m :");
 	ft_putendl("Enter the number of sticks and a newline for each match,");
 	ft_putendl("Then init the game with a newline.\n");
 	ft_putendl("Number of sticks minimum : 1");
