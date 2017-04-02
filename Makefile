@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/31 20:16:58 by mapandel          #+#    #+#              #
-#    Updated: 2017/04/02 05:19:35 by mapandel         ###   ########.fr        #
+#    Updated: 2017/04/02 17:33:28 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC =		sources/main.c \
 			sources/display.c \
 			sources/display2.c \
 			sources/game.c \
-			#sources/parsing_param.c \
+			sources/parsing_param.c \
 
 OBJ =		$(SRC:.c=.o)
 
