@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/01 12:56:08 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/01 23:45:26 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 17:30:35 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,20 @@
 static t_alcu	*parsing_stdi2(t_alcu *alcu, char *buf, int *tmp, int lock,
 	int *ret)
 {
+	int		i;
+
+	i = 0;
 	if ((buf[0] == '\n' && !lock) || ft_strlen(buf) > 6
 		|| (*tmp = ft_atoi(buf)) < 1 || *tmp > 10000
 		|| !(alcu = init_add_t_alcu(alcu)))
+	{
+		ft_strdel(&buf);
+		*ret = -1;
+		return (alcu);
+	}
+	while (ft_isdigit((int)buf[i]))
+		++i;
+	if (buf[i] != '\n')
 	{
 		ft_strdel(&buf);
 		*ret = -1;
