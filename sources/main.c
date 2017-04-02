@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/01 20:00:42 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 04:58:02 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static t_alcu2				*init_t_alcu2(t_alcu2 *alcu2)
 		return (NULL);
 	alcu2->scoreai = 0;
 	alcu2->scorehuman = 0;
+	alcu2->taken = 0;
 	return (alcu2);
 }
 
@@ -86,13 +87,13 @@ int					main(int argc, char **argv)
 	if (!(alcu2 = init_t_alcu2(alcu2)))
 		return (-1);
 	display_start();
-	if ((argc == 1 && (!(alcu = parsing_stdi(alcu, &ret)) || ret == -1)))
-		//|| (argc == 2 && (!(alcu = parsing_param(alcu, argv)) || ret == -1)))
+	if ((argc == 1 && (!(alcu = parsing_stdi(alcu, &ret)) || ret == -1))
+		//|| (argc == 2 && (!(alcu = parsing_param(alcu, argv)) || ret == -1))
+		|| game(alcu, alcu2))
 	{
 		display_error(alcu, alcu2);
 		return (-1);
 	}
-	game(alcu, alcu2);
 	del_t_alcu(alcu, alcu2);
 	return (0);
 }
