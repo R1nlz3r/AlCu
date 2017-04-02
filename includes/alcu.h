@@ -6,15 +6,15 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/02 05:08:16 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 21:04:21 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALCU_H
 # define ALCU_H
 
-#include "../libft/libft.h"
-#include <fcntl.h>
+# include "../libft/libft.h"
+# include <fcntl.h>
 
 typedef struct			s_alcu
 {
@@ -46,6 +46,6 @@ void					display_human_won(t_alcu2 *alcu2);
 void					display_ai_won(t_alcu2 *alcu2);
 t_alcu					*parsing_stdi(t_alcu *alcu, int *ret);
 t_alcu					*parsing_param(t_alcu *alcu, char **argv, int *ret);
-int		 				game(t_alcu *alcu, t_alcu2 *alcu2);
+int						game(t_alcu *alcu, t_alcu2 *alcu2);
 
 #endif
