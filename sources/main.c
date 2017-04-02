@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 20:26:57 by mapandel          #+#    #+#             */
-/*   Updated: 2017/04/02 04:58:02 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/04/02 17:12:54 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int					main(int argc, char **argv)
 	t_alcu2		*alcu2;
 	int			ret;
 
-	(void)argv;
 	alcu = NULL;
 	alcu2 = NULL;
 	ret = 0;
@@ -88,7 +87,8 @@ int					main(int argc, char **argv)
 		return (-1);
 	display_start();
 	if ((argc == 1 && (!(alcu = parsing_stdi(alcu, &ret)) || ret == -1))
-		//|| (argc == 2 && (!(alcu = parsing_param(alcu, argv)) || ret == -1))
+		|| (argc == 2 && (!(alcu = parsing_param(alcu, argv, &ret))
+		|| ret == -1))
 		|| game(alcu, alcu2))
 	{
 		display_error(alcu, alcu2);
